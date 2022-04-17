@@ -1,4 +1,4 @@
-Title: Appointment Scheduling Application
+<h1>Title: Appointment Scheduling Application</h1>
     This application can be used to schedule appointments using a GUI and can also generate reports about the appointments,
     the contacts, and the customers. The application allows a user to view appointments, view customers, and modify both as well.
     The program also keeps a log file of all login attempts to the application.
