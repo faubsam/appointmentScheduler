@@ -1,0 +1,6 @@
+loginPageTitle = Connexion
+loginUsernameLabel = Nom d'utilisateur
+loginPasswordLabel = Mot de passe
+loginButton = Se connecter
+loginTimezoneLabel = Fuseau horaire: 
+alertText = Soumission incorrecte
