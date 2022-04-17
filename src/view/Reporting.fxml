@@ -21,12 +21,12 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <RadioButton fx:id="appointmentsByTypeButton" layoutX="19.0" layoutY="125.0" mnemonicParsing="false" selected="true" text="Appointments by Type and Month">
+      <RadioButton fx:id="appointmentsByTypeButton" layoutX="19.0" layoutY="125.0" mnemonicParsing="false" text="Appointments by Type and Month">
          <toggleGroup>
             <ToggleGroup fx:id="reportSelectorGroup" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="appointmentsByContactsButton" layoutX="19.0" layoutY="195.0" mnemonicParsing="false" text="Contacts Schedule" toggleGroup="$reportSelectorGroup" />
+      <RadioButton fx:id="appointmentsByContactsButton" layoutX="19.0" layoutY="195.0" mnemonicParsing="false"  selected="true" text="Contacts Schedule" toggleGroup="$reportSelectorGroup" />
       <RadioButton fx:id="appointmentsByCountryButton" layoutX="19.0" layoutY="275.0" mnemonicParsing="false" text="Appointments by Country" toggleGroup="$reportSelectorGroup" />
       <Label layoutX="334.0" layoutY="125.0" prefHeight="17.0" prefWidth="331.0" text="Returns a list of customer appointments by type and month" />
       <Label layoutX="334.0" layoutY="195.0" prefHeight="17.0" prefWidth="358.0" text="Return a list of appointments for each contact in the organization" />

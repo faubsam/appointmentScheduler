@@ -129,7 +129,7 @@ public class ModifyAppointment implements Initializable {
 
             LocalDateTime start = TimeConversions.toUTCTime(LocalDateTime.of(startDate, startTime));
             LocalDateTime end = TimeConversions.toUTCTime(LocalDateTime.of(endDate, endTime));
-            int customerID = Integer.parseInt(modifyAppointmentCustomerID.getText());
+            int customerID = Integer.parseInt(String.valueOf(modifyAppointmentCustomer.getSelectionModel().getSelectedItem().getCustomerID()));
 
             int id = a.getAppointmentID();
             a.setTitle(modifyAppointmentTitle.getText());
@@ -137,8 +137,8 @@ public class ModifyAppointment implements Initializable {
             a.setLocation(modifyAppointmentLocation.getText());
             a.setType(modifyAppointmentType.getText());
             a.setCustomerID(customerID);
-            a.setUserID(Integer.parseInt(modifyAppointmentUserID.getText()));
-            a.setContactID(modifyAppointmentContact.getSelectionModel().getSelectedItem().getContactID());
+            a.setUserID(Integer.parseInt(String.valueOf(modifyAppointmentUser.getSelectionModel().getSelectedItem().getUserID())));
+            a.setContactID(Integer.parseInt(String.valueOf(modifyAppointmentContact.getSelectionModel().getSelectedItem().getContactID())));
             a.setStart(start);
             a.setEnd(end);
 
