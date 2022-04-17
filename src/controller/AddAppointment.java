@@ -97,6 +97,7 @@ public class AddAppointment implements Initializable {
             LocalTime endTime = addAppointmentEndTime.getValue();
 
             int id = 0;
+
             String title = addAppointmentTitle.getText();
             String description = addAppointmentDescription.getText();
             String location = addAppointmentLocation.getText();
@@ -107,16 +108,20 @@ public class AddAppointment implements Initializable {
             int userID = Integer.parseInt(String.valueOf(addAppointmentUser.getSelectionModel().getSelectedItem().getUserID()));
             int contactID = Integer.parseInt(String.valueOf(addAppointmentContact.getSelectionModel().getSelectedItem().getContactID()));
 
-            if(start.isEqual(end) || start.isAfter(end)) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setContentText("Your appointment end time must be after the start time");
+            if (title.isBlank() || description.isBlank() || location.isBlank() || type.isBlank()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please fill out all of the required fields.");
                 alert.showAndWait();
-            } else if (!start.toLocalDate().isEqual(end.toLocalDate())) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setContentText("Your appointment end and start date must be on the same day");
-                alert.showAndWait();
-            }
-            else {
+            } else {
+                if (start.isEqual(end) || start.isAfter(end)) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setContentText("Your appointment end time must be after the start time");
+                    alert.showAndWait();
+                } else if (!start.toLocalDate().isEqual(end.toLocalDate())) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setContentText("Your appointment end and start date must be on the same day");
+                    alert.showAndWait();
+                } else {
 
                     int conflict = Appointment.checkForOverlappingAppointment(start, end, customerID);
                     if (conflict == 0) {
@@ -134,14 +139,22 @@ public class AddAppointment implements Initializable {
                         alert.showAndWait();
                     }
 
+                }
             }
 
-
         } catch (NullPointerException e) {
-
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please fill out all of the required fields.");
+            alert.showAndWait();
+            e.printStackTrace();
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Invalid data entered - Customer ID or User ID does not exist. Please try again");
+            alert.showAndWait();
+            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please fill out all of the required fields.");
             alert.showAndWait();
             e.printStackTrace();
         }

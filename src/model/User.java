@@ -98,7 +98,7 @@ public class User {
                 result = true;
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setContentText("You have an appointment within the next 15 minutes!\n" +
-                        " Appointment ID: " + appt.getAppointmentID() + "\n" +
+                        "Appointment ID: " + appt.getAppointmentID() + "\n" +
                         "Appointment Date: " + appt.getStart().toLocalDate() + "\n" +
                         "Appointment Time: " + appt.getStart().toLocalTime());
                 alert.showAndWait();
