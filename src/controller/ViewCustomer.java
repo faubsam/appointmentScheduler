@@ -221,7 +221,9 @@ public class ViewCustomer implements Initializable {
      */
     public void onCustomersTableDivisionCommit(TableColumn.CellEditEvent cellEditEvent) throws SQLException {
         selectedCustomer = (Customer) customersTable.getSelectionModel().getSelectedItem();
-        selectedCustomer.setDivisionID(Integer.parseInt(cellEditEvent.getNewValue().toString()));
+        FirstLevelDivision div = (FirstLevelDivision) cellEditEvent.getNewValue();
+
+        selectedCustomer.setDivisionID(div.getDivisionID());
         CustomerDAO.update(selectedCustomer.getCustomerID(), selectedCustomer);
     }
 

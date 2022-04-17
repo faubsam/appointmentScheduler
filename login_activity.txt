@@ -8,3 +8,8 @@
 2022-04-17T13:32:42.272451400     Login attempt by user: test     Result: Authentication successful
 2022-04-17T13:36:29.158690300     Login attempt by user: test     Result: Authentication successful
 2022-04-17T13:40:59.876876300     Login attempt by user: test     Result: Authentication successful
+2022-04-17T14:03:58.313889600     Login attempt by user: test     Result: Authentication successful
+2022-04-17T14:11:06.832732     Login attempt by user: test     Result: Authentication failed
+2022-04-17T14:12:05.881953900     Login attempt by user: test     Result: Authentication failed
+2022-04-17T14:19:04.835971200     Login attempt by user: test     Result: Authentication successful
+2022-04-17T14:36:24.472077600     Login attempt by user: test     Result: Authentication successful
