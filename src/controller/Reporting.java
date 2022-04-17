@@ -9,10 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import model.Contact;
@@ -63,13 +60,20 @@ public class Reporting implements Initializable {
      */
     public void onGenerateReportButton(ActionEvent actionEvent) throws SQLException, IOException {
         if (appointmentsByContactsButton.isSelected()) {
+
             selectedContact = contactsReportComboBox.getSelectionModel().getSelectedItem();
-            Parent root = FXMLLoader.load(getClass().getResource("/view/contactsReport.fxml"));
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root, 1074, 795);
-            stage.setTitle("Contact Report");
-            stage.setScene(scene);
-            stage.show();
+            if (selectedContact == null) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please select a contact");
+                alert.showAndWait();
+            } else {
+                Parent root = FXMLLoader.load(getClass().getResource("/view/contactsReport.fxml"));
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root, 1074, 795);
+                stage.setTitle("Contact Report");
+                stage.setScene(scene);
+                stage.show();
+            }
         } else if(appointmentsByCountryButton.isSelected()) {
 
             Parent root = FXMLLoader.load(getClass().getResource("/view/countryReport.fxml"));

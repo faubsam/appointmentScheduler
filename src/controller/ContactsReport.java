@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -33,7 +34,7 @@ public class ContactsReport implements Initializable {
     /**
      * Static member used to generate the report for this contact
      */
-    private static int contactID;
+    private static int contactID = 0;
 
     /**
      * Back to the previous page
@@ -56,16 +57,27 @@ public class ContactsReport implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        contactID = Reporting.getSelectedContact();
-        contactsReportIDCol.setCellValueFactory(new PropertyValueFactory<>("appointmentID"));
-        contactsReportTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
-        contactReportDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
-        contactsReportTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
-        contactsReportStartCol.setCellValueFactory(new PropertyValueFactory<>("start"));
-        contactsReportEndCol.setCellValueFactory(new PropertyValueFactory<>("end"));
-        contactsReportCustomerIDCol.setCellValueFactory(new PropertyValueFactory<>("customerID"));
-        contactsReportUserIDCol.setCellValueFactory(new PropertyValueFactory<>("userID"));
-        contactsReportContactIDCol.setCellValueFactory(new PropertyValueFactory<>("contactID"));
-        contactsReportTable.setItems(AppointmentsDAO.getContactsReport(contactID));
+        try {
+            contactID = Reporting.getSelectedContact();
+        } catch (NullPointerException e) {
+
+        }
+        if(contactID == 0) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please select a contact");
+            alert.showAndWait();
+
+        } else {
+            contactsReportIDCol.setCellValueFactory(new PropertyValueFactory<>("appointmentID"));
+            contactsReportTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+            contactReportDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+            contactsReportTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
+            contactsReportStartCol.setCellValueFactory(new PropertyValueFactory<>("start"));
+            contactsReportEndCol.setCellValueFactory(new PropertyValueFactory<>("end"));
+            contactsReportCustomerIDCol.setCellValueFactory(new PropertyValueFactory<>("customerID"));
+            contactsReportUserIDCol.setCellValueFactory(new PropertyValueFactory<>("userID"));
+            contactsReportContactIDCol.setCellValueFactory(new PropertyValueFactory<>("contactID"));
+            contactsReportTable.setItems(AppointmentsDAO.getContactsReport(contactID));
+        }
     }
 }
