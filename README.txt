@@ -10,8 +10,8 @@ Version: 1.0
 
 IDE: IntelliJ Community Edition 2021.3.3
 JDK: 17.0.2
-JavaFX-SDK-18
-mysql-connector-java 8.0.28
+JavaFX-SDK-17
+mysql-connector-java 8.0.25
 
 The additional report in the reports section gives a count of appointments grouped by country.
 As the business has offices in multiple countries, the report will display the count of appointments for each country.
