@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="562.0" prefWidth="964.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewCustomer">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="562.0" prefWidth="964.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewCustomer">
    <children>
       <Button fx:id="backToHomeButton" layoutX="36.0" layoutY="351.0" mnemonicParsing="false" onAction="#onBackToHomeButton" text="Back to Home" />
       <Button fx:id="addCustomerButton" layoutX="35.0" layoutY="106.0" mnemonicParsing="false" onAction="#onAddCustomerButton" text="Add Customer" />
