@@ -31,7 +31,7 @@ public class main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml"));
-        stage.setTitle("Login Screen");
+
         stage.setScene(new Scene(root, 600, 600));
         stage.show();
     }
