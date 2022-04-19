@@ -54,7 +54,7 @@ public class ViewCustomer implements Initializable {
     /**
      * List of customers
      */
-    private static ObservableList<Customer> customers = CustomerDAO.getAll();
+    ObservableList<Customer> customers;
     /**
      * List of countries
      */
@@ -66,7 +66,7 @@ public class ViewCustomer implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //customers = CustomerDAO.getAll();
+        customers = CustomerDAO.getAll();
 
         customersTableID.setCellValueFactory(new PropertyValueFactory<>("customerID"));
         customersTableName.setCellValueFactory(new PropertyValueFactory<>("name"));

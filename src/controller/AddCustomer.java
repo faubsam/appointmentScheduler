@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -65,19 +66,27 @@ public class AddCustomer implements Initializable {
             String phone = addCustomerPhone.getText();
 
             int divisionID = addCustomerDivision.getValue().getDivisionID();
+            if(name.isBlank() || address.isBlank() || postal.isBlank() || phone.isBlank()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please fill out all of the required fields.");
+                alert.showAndWait();
+            } else {
+                Customer c = new Customer(id, name, address, postal, phone, divisionID);
+                CustomerDAO.insert(c);
+                Parent root = FXMLLoader.load(getClass().getResource("/view/ViewCustomer.fxml"));
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root, 1074, 795);
+                stage.setTitle("Customers Page");
+                stage.setScene(scene);
+                stage.show();
+            }
 
-            Customer c = new Customer(id, name, address, postal, phone, divisionID);
-            CustomerDAO.insert(c);
-
-        } catch (NumberFormatException e) {
-
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please fill out all of the required fields.");
+            alert.showAndWait();
         }
-        Parent root = FXMLLoader.load(getClass().getResource("/view/ViewCustomer.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 1074, 795);
-        stage.setTitle("Customers Page");
-        stage.setScene(scene);
-        stage.show();
+
     }
 
     /**
