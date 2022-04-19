@@ -146,7 +146,7 @@ public class AddAppointment implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please fill out all of the required fields.");
             alert.showAndWait();
-            e.printStackTrace();
+
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Invalid data entered - Customer ID or User ID does not exist. Please try again");
