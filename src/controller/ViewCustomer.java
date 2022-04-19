@@ -54,7 +54,7 @@ public class ViewCustomer implements Initializable {
     /**
      * List of customers
      */
-    ObservableList<Customer> customers;
+    private static ObservableList<Customer> customers = CustomerDAO.getAll();
     /**
      * List of countries
      */
@@ -66,7 +66,7 @@ public class ViewCustomer implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        customers = CustomerDAO.getAll();
+        //customers = CustomerDAO.getAll();
 
         customersTableID.setCellValueFactory(new PropertyValueFactory<>("customerID"));
         customersTableName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -177,8 +177,17 @@ public class ViewCustomer implements Initializable {
      */
     public void onCustomersTableNameCommit(TableColumn.CellEditEvent cellEditEvent) throws SQLException {
         selectedCustomer = (Customer) customersTable.getSelectionModel().getSelectedItem();
-        selectedCustomer.setName(cellEditEvent.getNewValue().toString());
-        CustomerDAO.update(selectedCustomer.getCustomerID(), selectedCustomer);
+        String newName = cellEditEvent.getNewValue().toString();
+        if (!newName.isBlank()) {
+            selectedCustomer.setName(cellEditEvent.getNewValue().toString());
+            CustomerDAO.update(selectedCustomer.getCustomerID(), selectedCustomer);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("This field cannot be empty.");
+            alert.showAndWait();
+
+        }
+
     }
 
     /**
@@ -188,8 +197,15 @@ public class ViewCustomer implements Initializable {
      */
     public void onCustomersTableAddressCommit(TableColumn.CellEditEvent cellEditEvent) throws SQLException {
         selectedCustomer = (Customer) customersTable.getSelectionModel().getSelectedItem();
-        selectedCustomer.setAddress(cellEditEvent.getNewValue().toString());
-        CustomerDAO.update(selectedCustomer.getCustomerID(), selectedCustomer);
+        String newAddress = cellEditEvent.getNewValue().toString();
+        if(!newAddress.isBlank()) {
+            selectedCustomer.setAddress(newAddress);
+            CustomerDAO.update(selectedCustomer.getCustomerID(), selectedCustomer);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("This field cannot be empty.");
+            alert.showAndWait();
+        }
     }
 
     /**
@@ -199,8 +215,15 @@ public class ViewCustomer implements Initializable {
      */
     public void onCustomersTablePostalCommit(TableColumn.CellEditEvent cellEditEvent) throws SQLException {
         selectedCustomer = (Customer) customersTable.getSelectionModel().getSelectedItem();
-        selectedCustomer.setPostalCode(cellEditEvent.getNewValue().toString());
-        CustomerDAO.update(selectedCustomer.getCustomerID(), selectedCustomer);
+        String newPostal = cellEditEvent.getNewValue().toString();
+        if(!newPostal.isBlank()) {
+            selectedCustomer.setPostalCode(newPostal);
+            CustomerDAO.update(selectedCustomer.getCustomerID(), selectedCustomer);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("This field cannot be empty.");
+            alert.showAndWait();
+        }
     }
 
     /**
@@ -210,8 +233,15 @@ public class ViewCustomer implements Initializable {
      */
     public void onCustomersTablePhoneCommit(TableColumn.CellEditEvent cellEditEvent) throws SQLException {
         selectedCustomer = (Customer) customersTable.getSelectionModel().getSelectedItem();
-        selectedCustomer.setPhone(cellEditEvent.getNewValue().toString());
-        CustomerDAO.update(selectedCustomer.getCustomerID(), selectedCustomer);
+        String newPhone = cellEditEvent.getNewValue().toString();
+        if(!newPhone.isBlank()) {
+            selectedCustomer.setPhone(newPhone);
+            CustomerDAO.update(selectedCustomer.getCustomerID(), selectedCustomer);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("This field cannot be empty.");
+            alert.showAndWait();
+        }
     }
 
     /**

@@ -3,6 +3,7 @@ package controller;
 import DAO.CountryDAO;
 import DAO.DivisionDAO;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import model.Country;
 import model.Customer;
 import controller.ViewCustomer;
@@ -88,21 +89,30 @@ public class ModifyCustomer implements Initializable {
             c.setPhone(modifyCustomerPhone.getText());
             c.setPostalCode(modifyCustomerPostalCode.getText());
             c.setDivisionID(modifyCustomerDivision.getSelectionModel().getSelectedItem().getDivisionID());
+            if(modifyCustomerAddress.getText().isBlank() || modifyCustomerName.getText().isBlank() ||
+            modifyCustomerPhone.getText().isBlank() || modifyCustomerPostalCode.getText().isBlank()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Please fill out all of the required fields.");
+                alert.showAndWait();
+            } else {
+                CustomerDAO.update(id, c);
+                Parent root = FXMLLoader.load(getClass().getResource("/view/ViewCustomer.fxml"));
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root, 1074, 795);
+                stage.setTitle("Customers Page");
+                stage.setScene(scene);
+                stage.show();
+            }
 
-            CustomerDAO.update(id, c);
-
-        } catch (NumberFormatException e) {
-
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please fill out all of the required fields.");
+            alert.showAndWait();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        Parent root = FXMLLoader.load(getClass().getResource("/view/ViewCustomer.fxml"));
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root, 1074, 795);
-        stage.setTitle("Customers Page");
-        stage.setScene(scene);
-        stage.show();
+
     }
 
     /**
