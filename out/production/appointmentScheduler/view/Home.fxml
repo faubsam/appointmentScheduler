@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Home">
+   <children>
+      <Button fx:id="homeAppointmentsButton" layoutX="263.0" layoutY="120.0" mnemonicParsing="false" onAction="#onHomeAppointmentsButton" prefHeight="101.0" prefWidth="250.0" text="Appointments">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="homeCustomersButton" layoutX="263.0" layoutY="285.0" mnemonicParsing="false" onAction="#onHomeCustomersButton" prefHeight="101.0" prefWidth="250.0" text="Customers">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="homeReportsButton" layoutX="263.0" layoutY="445.0" mnemonicParsing="false" onAction="#onHomeReportsButton" prefHeight="101.0" prefWidth="250.0" text="Reports">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
