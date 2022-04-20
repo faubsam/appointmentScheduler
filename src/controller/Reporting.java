@@ -1,6 +1,5 @@
 package controller;
 
-import DAO.AppointmentsDAO;
 import DAO.ContactsDAO;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.util.Pair;
 import model.Contact;
 
 import java.io.IOException;

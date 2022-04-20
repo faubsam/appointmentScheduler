@@ -1,5 +1,7 @@
 package utils;
 
+import utils.JDBC;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 

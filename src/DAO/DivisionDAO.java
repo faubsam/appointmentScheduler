@@ -2,7 +2,6 @@ package DAO;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.Country;
 import model.FirstLevelDivision;
 import utils.Query;
 

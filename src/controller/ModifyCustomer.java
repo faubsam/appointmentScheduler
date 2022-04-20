@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import model.Country;
 import model.Customer;
-import controller.ViewCustomer;
 import DAO.CustomerDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;

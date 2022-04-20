@@ -1,14 +1,10 @@
 package model;
 
 import DAO.AppointmentsDAO;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Alert;
 import utils.TimeConversions;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 public class Appointment {
     /**

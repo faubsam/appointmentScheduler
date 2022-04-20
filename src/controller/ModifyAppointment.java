@@ -155,7 +155,7 @@ public class ModifyAppointment implements Initializable {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setContentText("Your appointment end time must be after the start time");
                     alert.showAndWait();
-                } else if (!start.toLocalDate().isEqual(end.toLocalDate())) {
+                } else if (!startDate.isEqual(endDate)) {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setContentText("Your appointment end and start date must be on the same day");
                     alert.showAndWait();
@@ -163,7 +163,7 @@ public class ModifyAppointment implements Initializable {
 
                     int conflict = Appointment.checkForOverlappingAppointment(start, end, customerID);
                     if (conflict == 0 || conflict == id) {
-                        AppointmentsDAO.update(a, id);
+                        AppointmentsDAO.update(a);
                         Parent root = FXMLLoader.load(getClass().getResource("/view/ViewAppointments.fxml"));
                         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                         Scene scene = new Scene(root, 800, 600);

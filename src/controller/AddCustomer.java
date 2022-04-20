@@ -3,7 +3,6 @@ package controller;
 import DAO.CountryDAO;
 import DAO.CustomerDAO;
 import DAO.DivisionDAO;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +21,6 @@ import model.FirstLevelDivision;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AddCustomer implements Initializable {

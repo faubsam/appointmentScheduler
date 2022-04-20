@@ -2,7 +2,6 @@ package DAO;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.util.Pair;
 
 import model.Appointment;
 import model.CountryReport;
@@ -13,11 +12,8 @@ import utils.TimeConversions;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 public class AppointmentsDAO {
@@ -40,8 +36,8 @@ public class AppointmentsDAO {
                 String description = rs.getString("Description");
                 String location = rs.getString("Location");
                 String type = rs.getString("Type");
-                LocalDateTime start = rs.getObject("Start", LocalDateTime.class);
-                LocalDateTime end = rs.getObject("End", LocalDateTime.class);
+                LocalDateTime start = rs.getTimestamp("Start").toLocalDateTime();
+                LocalDateTime end = rs.getTimestamp("End").toLocalDateTime();
                 int customerID = rs.getInt("Customer_ID");
                 int userID = rs.getInt("User_ID");
                 int contactID = rs.getInt("Contact_ID");
@@ -77,8 +73,8 @@ public class AppointmentsDAO {
                 String description = rs.getString("Description");
                 String location = rs.getString("Location");
                 String type = rs.getString("Type");
-                LocalDateTime start = rs.getObject("Start", LocalDateTime.class);
-                LocalDateTime end = rs.getObject("End", LocalDateTime.class);
+                LocalDateTime start = rs.getTimestamp("Start").toLocalDateTime();
+                LocalDateTime end = rs.getTimestamp("End").toLocalDateTime();
                 int customerID = rs.getInt("Customer_ID");
                 int userID = rs.getInt("User_ID");
                 int contactID = rs.getInt("Contact_ID");
@@ -111,8 +107,8 @@ public class AppointmentsDAO {
                 String description = rs.getString("Description");
                 String location = rs.getString("Location");
                 String type = rs.getString("Type");
-                LocalDateTime start = rs.getObject("Start", LocalDateTime.class);
-                LocalDateTime end = rs.getObject("End", LocalDateTime.class);
+                LocalDateTime start = rs.getTimestamp("Start").toLocalDateTime();
+                LocalDateTime end = rs.getTimestamp("End").toLocalDateTime();
                 int customerID = rs.getInt("Customer_ID");
                 int userID = rs.getInt("User_ID");
                 int contactID = rs.getInt("Contact_ID");
@@ -156,8 +152,8 @@ public class AppointmentsDAO {
         ps.setString(2, appt.getDescription());
         ps.setString(3, appt.getLocation());
         ps.setString(4, appt.getType());
-        ps.setObject(5, appt.getStart());
-        ps.setObject(6, appt.getEnd());
+        ps.setTimestamp(5, Timestamp.valueOf(appt.getStart()));
+        ps.setTimestamp(6, Timestamp.valueOf(appt.getEnd()));
         ps.setInt(7, appt.getCustomerID());
         ps.setInt(8, appt.getUserID());
         ps.setInt(9,appt.getContactID());
@@ -170,25 +166,24 @@ public class AppointmentsDAO {
     /**
      * Update an existing appointment
      * @param a appointment object to modify
-     * @param id appointment id
      * @return int number of rows affected by the query
      * @throws SQLException
      */
-    public static int update(Appointment a, int id) throws SQLException {
-        String query = "UPDATE appointments SET Appointment_ID = ?, Title = ?, Description = ?, Location = ?, Type = ?, Start = ?, End = ?, Customer_ID = ?, User_ID = ?, Contact_ID = ? WHERE Appointment_ID = ?";
+    public static int update(Appointment a) throws SQLException {
+        String query = "UPDATE appointments SET Title = ?, Description = ?, Location = ?, Type = ?, Start = ?, End = ?, Customer_ID = ?, User_ID = ?, Contact_ID = ? WHERE Appointment_ID = ?";
         PreparedStatement ps = Query.getQuery(query);
 
-        ps.setInt(1, a.getAppointmentID());
-        ps.setString(2, a.getTitle());
-        ps.setString(3, a.getDescription());
-        ps.setString(4, a.getLocation());
-        ps.setString(5, a.getType());
-        ps.setObject(6, a.getStart());
-        ps.setObject(7, a.getEnd());
-        ps.setInt(8, a.getCustomerID());
-        ps.setInt(9, a.getUserID());
-        ps.setInt(10, a.getContactID());
-        ps.setInt(11, id);
+         // remove
+        ps.setString(1, a.getTitle());
+        ps.setString(2, a.getDescription());
+        ps.setString(3, a.getLocation());
+        ps.setString(4, a.getType());
+        ps.setTimestamp(5, Timestamp.valueOf(a.getStart()));
+        ps.setTimestamp(6, Timestamp.valueOf(a.getEnd()));
+        ps.setInt(7, a.getCustomerID());
+        ps.setInt(8, a.getUserID());
+        ps.setInt(9, a.getContactID());
+        ps.setInt(10, a.getAppointmentID());
 
 
         int rowsAffected = ps.executeUpdate();
@@ -214,8 +209,8 @@ public class AppointmentsDAO {
                 String description = rs.getString("Description");
                 String location = rs.getString("Location");
                 String type = rs.getString("Type");
-                LocalDateTime start = rs.getObject("Start", LocalDateTime.class);
-                LocalDateTime end = rs.getObject("End", LocalDateTime.class);
+                LocalDateTime start = rs.getTimestamp("Start").toLocalDateTime();
+                LocalDateTime end = rs.getTimestamp("End").toLocalDateTime();
                 int customerID = rs.getInt("Customer_ID");
                 int userID = rs.getInt("User_ID");
                 int contactID = rs.getInt("Contact_ID");
