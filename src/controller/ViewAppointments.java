@@ -82,12 +82,13 @@ public class ViewAppointments implements Initializable{
      */
     public void onViewAppointmentsByMonthButton(ActionEvent actionEvent) {
         appointments = AppointmentsDAO.getAll();
-        LocalDateTime monthEnd = LocalDateTime.now().with(TemporalAdjusters.lastDayOfMonth());
+        LocalDateTime monthEnd = LocalDateTime.now().with(TemporalAdjusters.lastDayOfMonth()).withHour(23);
+        LocalDateTime monthStart = LocalDateTime.now().with(TemporalAdjusters.firstDayOfMonth()).withHour(0);
 
         Stream<Appointment> apptsStream = appointments.stream();
         ObservableList<Appointment> apptsResults = apptsStream.filter(appointment -> appointment.getStart()
-                .isBefore(LocalDateTime.now().with(TemporalAdjusters.lastDayOfMonth()).withHour(23)))
-                .filter(appointment -> appointment.getStart().isAfter(LocalDateTime.now().with(TemporalAdjusters.firstDayOfMonth()).withHour(0)))
+                .isBefore(monthEnd))
+                .filter(appointment -> appointment.getStart().isAfter(monthStart))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
         viewAppointmentsTable.setItems(apptsResults);
     }
@@ -102,12 +103,13 @@ public class ViewAppointments implements Initializable{
      */
     public void onViewAppointmentsByWeekButton(ActionEvent actionEvent) {
         appointments = AppointmentsDAO.getAll();
-
+        LocalDateTime weekStart = LocalDateTime.now().with(TemporalAdjusters.previous(DayOfWeek.SUNDAY)).withHour(0);
+        LocalDateTime weekEnd = LocalDateTime.now().with(TemporalAdjusters.next(DayOfWeek.SUNDAY)).withHour(0);
 
         Stream<Appointment> apptsStream = appointments.stream();
         ObservableList<Appointment> apptsResults = apptsStream.filter(appointment -> appointment.getStart()
-                .isBefore(LocalDateTime.now().with(TemporalAdjusters.next(DayOfWeek.SUNDAY)).withHour(0)))
-                .filter(appointment -> appointment.getStart().isAfter(LocalDateTime.now().with(TemporalAdjusters.previous(DayOfWeek.SUNDAY)).withHour(0)))
+                .isBefore(weekEnd))
+                .filter(appointment -> appointment.getStart().isAfter(weekStart))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
         viewAppointmentsTable.setItems(apptsResults);
     }
