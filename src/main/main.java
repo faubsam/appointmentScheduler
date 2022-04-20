@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import utils.JDBC;
 
 import java.sql.SQLException;
+import java.util.Locale;
 
 public class main extends Application {
 

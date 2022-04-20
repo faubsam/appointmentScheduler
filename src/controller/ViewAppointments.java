@@ -104,7 +104,7 @@ public class ViewAppointments implements Initializable{
     public void onViewAppointmentsByWeekButton(ActionEvent actionEvent) {
         appointments = AppointmentsDAO.getAll();
         LocalDateTime weekStart = LocalDateTime.now().with(TemporalAdjusters.previous(DayOfWeek.SUNDAY)).withHour(0);
-        LocalDateTime weekEnd = LocalDateTime.now().with(TemporalAdjusters.next(DayOfWeek.SUNDAY)).withHour(23).withMinute(59);
+        LocalDateTime weekEnd = LocalDateTime.now().with(TemporalAdjusters.next(DayOfWeek.SATURDAY)).withHour(23).withMinute(59);
 
         Stream<Appointment> apptsStream = appointments.stream();
         ObservableList<Appointment> apptsResults = apptsStream.filter(appointment -> appointment.getStart()
