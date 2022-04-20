@@ -249,8 +249,7 @@ public class Appointment {
         for(Appointment appt: customerAppointments) {
             LocalDateTime apptStart = appt.getStart();
             LocalDateTime apptEnd = appt.getEnd();
-            System.out.println("ID: " + appt.getAppointmentID() + "    start: " + apptStart + "  end:" + apptEnd);
-            System.out.println("    start: " + start + "  end:" + end);
+
                 // && end.isBefore(apptEnd)
             if (start.isBefore(apptStart) && end.isAfter(apptStart)) {
                 apptID = appt.getAppointmentID();
