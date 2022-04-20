@@ -44,7 +44,7 @@ public class AppointmentsDAO {
 
 
 
-                Appointment a = new Appointment(appointmentID, title, description, location, type, TimeConversions.toLocalSystemTime(start), TimeConversions.toLocalSystemTime(end), customerID, userID, contactID);
+                Appointment a = new Appointment(appointmentID, title, description, location, type, start, end, customerID, userID, contactID);
                 appointments.add(a);
             }
         } catch (SQLException e) {
@@ -79,7 +79,7 @@ public class AppointmentsDAO {
                 int userID = rs.getInt("User_ID");
                 int contactID = rs.getInt("Contact_ID");
 
-                a = new Appointment(appointmentID, title, description, location, type, TimeConversions.toLocalSystemTime(start), TimeConversions.toLocalSystemTime(end), customerID, userID, contactID);
+                a = new Appointment(appointmentID, title, description, location, type, start, end, customerID, userID, contactID);
             }
         } catch(SQLException e){
                 e.printStackTrace();
@@ -115,7 +115,7 @@ public class AppointmentsDAO {
 
 
 
-                Appointment a = new Appointment(appointmentID, title, description, location, type, TimeConversions.toLocalSystemTime(start), TimeConversions.toLocalSystemTime(end), customerID, userID, contactID);
+                Appointment a = new Appointment(appointmentID, title, description, location, type, start, end, customerID, userID, contactID);
                 appointments.add(a);
             }
         } catch (SQLException e) {

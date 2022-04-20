@@ -247,23 +247,30 @@ public class Appointment {
         ObservableList<Appointment> customerAppointments = AppointmentsDAO.getAllAppointmentsForCustomer(id);
 
         for(Appointment appt: customerAppointments) {
-            LocalDateTime apptStart = TimeConversions.toUTCTime(appt.getStart());
-            LocalDateTime apptEnd = TimeConversions.toUTCTime(appt.getEnd());
-
-            if (start.isBefore(apptStart) && end.isAfter(apptStart) && end.isBefore(apptEnd)) {
+            LocalDateTime apptStart = appt.getStart();
+            LocalDateTime apptEnd = appt.getEnd();
+            System.out.println("ID: " + appt.getAppointmentID() + "    start: " + apptStart + "  end:" + apptEnd);
+            System.out.println("    start: " + start + "  end:" + end);
+                // && end.isBefore(apptEnd)
+            if (start.isBefore(apptStart) && end.isAfter(apptStart)) {
                 apptID = appt.getAppointmentID();
-
-            } else if (start.isAfter(apptStart) && end.isAfter(apptEnd) && start.isBefore(apptEnd)) {
+                break;
+    // start.isAfter(apptStart) && end.isAfter(apptEnd) && start.isBefore(apptEnd)
+            } else if (end.isAfter(apptEnd) && start.isBefore(apptEnd)) {
                 apptID = appt.getAppointmentID();
+                break;
 
             } else if (start.isBefore(apptStart) && end.isAfter(apptEnd)) {
                 apptID = appt.getAppointmentID();
+                break;
 
             } else if (start.isEqual(apptStart) || end.isEqual(apptEnd)) {
                 apptID = appt.getAppointmentID();
+                break;
 
             } else if (start.isAfter(apptStart) && end.isBefore(apptEnd)) {
                 apptID = appt.getAppointmentID();
+                break;
             }
         }
 

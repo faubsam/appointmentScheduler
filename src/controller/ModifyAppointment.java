@@ -127,8 +127,8 @@ public class ModifyAppointment implements Initializable {
             LocalDate endDate = modifyAppointmentEndDate.getValue();
             LocalTime endTime = modifyAppointmentEndTime.getValue();
 
-            LocalDateTime start = TimeConversions.toUTCTime(LocalDateTime.of(startDate, startTime));
-            LocalDateTime end = TimeConversions.toUTCTime(LocalDateTime.of(endDate, endTime));
+            LocalDateTime start = LocalDateTime.of(startDate, startTime);
+            LocalDateTime end = LocalDateTime.of(endDate, endTime);
             int customerID = Integer.parseInt(String.valueOf(modifyAppointmentCustomer.getSelectionModel().getSelectedItem().getCustomerID()));
             String title = modifyAppointmentTitle.getText();
             String description = modifyAppointmentDescription.getText();

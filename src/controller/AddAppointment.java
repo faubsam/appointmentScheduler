@@ -102,8 +102,8 @@ public class AddAppointment implements Initializable {
             String description = addAppointmentDescription.getText();
             String location = addAppointmentLocation.getText();
             String type = addAppointmentType.getText();
-            LocalDateTime start = TimeConversions.toUTCTime(LocalDateTime.of(startDate, startTime));
-            LocalDateTime end = TimeConversions.toUTCTime(LocalDateTime.of(endDate, endTime));
+            LocalDateTime start = LocalDateTime.of(startDate, startTime);
+            LocalDateTime end = LocalDateTime.of(endDate, endTime);
             int customerID = Integer.parseInt(String.valueOf(addAppointmentCustomer.getSelectionModel().getSelectedItem().getCustomerID()));
             int userID = Integer.parseInt(String.valueOf(addAppointmentUser.getSelectionModel().getSelectedItem().getUserID()));
             int contactID = Integer.parseInt(String.valueOf(addAppointmentContact.getSelectionModel().getSelectedItem().getContactID()));
