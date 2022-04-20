@@ -55,3 +55,7 @@
 2022-04-20T14:04:09.352414900     Login attempt by user: test     Result: Authentication successful
 2022-04-20T14:07:39.562902300     Login attempt by user: test     Result: Authentication successful
 2022-04-20T14:12:30.766165     Login attempt by user: test     Result: Authentication successful
+2022-04-20T14:16:18.150838500     Login attempt by user: test     Result: Authentication successful
+2022-04-20T14:25:09.070771600     Login attempt by user: test     Result: Authentication failed
+2022-04-20T14:25:13.552261300     Login attempt by user: test     Result: Authentication successful
+2022-04-20T14:31:06.607061500     Login attempt by user: test     Result: Authentication successful

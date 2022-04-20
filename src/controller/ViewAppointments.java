@@ -87,7 +87,7 @@ public class ViewAppointments implements Initializable{
         Stream<Appointment> apptsStream = appointments.stream();
         ObservableList<Appointment> apptsResults = apptsStream.filter(appointment -> appointment.getStart()
                 .isBefore(LocalDateTime.now().with(TemporalAdjusters.lastDayOfMonth()).withHour(23)))
-                .filter(appointment -> appointment.getStart().isAfter(LocalDateTime.now().minusMinutes(15)))
+                .filter(appointment -> appointment.getStart().isAfter(LocalDateTime.now().with(TemporalAdjusters.firstDayOfMonth()).withHour(0)))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
         viewAppointmentsTable.setItems(apptsResults);
     }
@@ -106,8 +106,8 @@ public class ViewAppointments implements Initializable{
 
         Stream<Appointment> apptsStream = appointments.stream();
         ObservableList<Appointment> apptsResults = apptsStream.filter(appointment -> appointment.getStart()
-                .isBefore(LocalDateTime.now().with(TemporalAdjusters.next(DayOfWeek.SUNDAY)).withHour(23)))
-                .filter(appointment -> appointment.getStart().isAfter(LocalDateTime.now().minusMinutes(15)))
+                .isBefore(LocalDateTime.now().with(TemporalAdjusters.next(DayOfWeek.SUNDAY)).withHour(0)))
+                .filter(appointment -> appointment.getStart().isAfter(LocalDateTime.now().with(TemporalAdjusters.previous(DayOfWeek.SUNDAY)).withHour(0)))
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
         viewAppointmentsTable.setItems(apptsResults);
     }
