@@ -71,6 +71,7 @@ public class ContactsReport implements Initializable {
             contactsReportIDCol.setCellValueFactory(new PropertyValueFactory<>("appointmentID"));
             contactsReportTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
             contactReportDescriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+            contactsReportLocationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
             contactsReportTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
             contactsReportStartCol.setCellValueFactory(new PropertyValueFactory<>("start"));
             contactsReportEndCol.setCellValueFactory(new PropertyValueFactory<>("end"));
